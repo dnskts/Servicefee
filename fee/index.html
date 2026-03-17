@@ -1,0 +1,108 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор сервисного сбора</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-wrapper">
+    <!-- Шапка и меню -->
+    <header class="app-header">
+        <div>
+            <div class="app-title">Калькулятор сервисного сбора</div>
+            <div class="app-subtitle">Условия слева, результат справа. Сервисный сбор включает эквайринг.</div>
+        </div>
+        <nav class="app-nav">
+            <a href="index.html" class="active">Калькулятор</a>
+            <a href="settings.html">Настройки</a>
+        </nav>
+    </header>
+
+    <!-- Основная раскладка: слева условия, справа результат -->
+    <div class="layout-main">
+        <!-- ЛЕВАЯ ЧАСТЬ: УСЛОВИЯ -->
+        <div>
+            <div class="card">
+                <div class="card-title">Условия сделки</div>
+                <div class="card-subtitle">
+                    Введите сумму услуги и заполните параметры. Настройки берутся со страницы «Настройки».
+                </div>
+
+                <!-- Базовые поля -->
+                <div class="field">
+                    <div class="field-label">Сумма услуги</div>
+                    <div class="field-hint">Числом, в валюте услуги (например, 25 000).</div>
+                    <input type="number" id="amountInput" min="0" step="0.01" placeholder="Например, 25000">
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Курс в рубли</div>
+                    <div class="field-hint">
+                        Сколько рублей за 1 единицу валюты услуги. Пока вводится вручную (потом можно взять из CRM).
+                    </div>
+                    <input type="number" id="rateInput" min="0" step="0.0001" value="1">
+                </div>
+
+                <!-- Динамические поля из сущностей -->
+                <div id="dynamicConditionsContainer"></div>
+
+                <button class="btn" id="calculateBtn">Рассчитать</button>
+                <button class="btn btn-secondary" id="clearBtn" style="margin-left: 8px;">Сбросить</button>
+
+                <div id="mainError" class="alert-error" style="display:none;"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Подсказка</div>
+                <div class="card-subtitle">
+                    Логику расчёта можно менять через страницу «Настройки» или визуальный конструктор правил.
+                </div>
+                <div class="text-muted">
+                    Если ни одно правило не подошло — будет показано предупреждение, и расчёт не выполнится.
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ: РЕЗУЛЬТАТ -->
+        <div>
+            <div class="card">
+                <div class="card-title">Результат</div>
+                <div class="card-subtitle">
+                    Сервисный сбор и тотал отображаются в рублях.<br>
+                    Эквайринг отдельно не показывается — он уже включён в сервисный сбор.
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Сервисный сбор (включая эквайринг), RUB</div>
+                    <div id="serviceFeeMain" class="result-main-value">—</div>
+                </div>
+
+                <div class="result-row">
+                    <div class="result-label">Сумма услуги (в рублях)</div>
+                    <div id="amountRubResult">—</div>
+                </div>
+
+                <div class="result-row">
+                    <div class="result-label">Сервисный сбор, RUB</div>
+                    <div id="serviceFeeResult">—</div>
+                </div>
+
+                <div class="result-row">
+                    <div class="result-label">Тотал к оплате клиентом, RUB</div>
+                    <div id="totalResult">—</div>
+                </div>
+
+                <div class="text-muted" style="margin-top: 8px;" id="ruleInfo">
+                    Правило ещё не применялось.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

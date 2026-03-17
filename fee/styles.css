@@ -1,0 +1,529 @@
+/* --------- ОБЩИЕ СТИЛИ ДЛЯ ОБОИХ ЭКРАНОВ --------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
+
+/* Обёртка по ширине окна */
+.app-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 20px 32px;
+}
+
+/* Верхняя панель: заголовок + меню */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.app-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.app-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Простое меню */
+.app-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.app-nav a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.app-nav a.active {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* Карточка (белый блок с тенью) */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 18px 20px 20px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+    margin-bottom: 16px;
+}
+
+/* Заголовки блоков */
+.card-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #2563eb;
+    color: #ffffff;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Инпуты и селекты */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 10px;
+}
+
+.field-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.field-hint {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    padding: 7px 9px;
+    font-size: 14px;
+    outline: none;
+    background: #f9fafb;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    width: 100%;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+}
+
+/* Малый текст/подпись */
+.text-muted {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Сообщение об ошибке */
+.alert-error {
+    margin-top: 6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+}
+
+.alert-success {
+    margin-top: 6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: #ecfdf5;
+    color: #15803d;
+    font-size: 13px;
+}
+
+/* Таблица для списков настроек */
+.settings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.settings-table th,
+.settings-table td {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 4px 6px;
+    text-align: left;
+}
+
+.settings-table th {
+    background: #f9fafb;
+    font-weight: 600;
+}
+
+/* --------- СПЕЦИФИКА ДЛЯ ГЛАВНОЙ --------- */
+
+/* Два блока: слева условия, справа результат */
+.layout-main {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+    gap: 18px;
+}
+
+@media (max-width: 900px) {
+    .layout-main {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Правый блок с крупным выводом */
+.result-main-value {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.result-label {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px dashed #e5e7eb;
+    font-size: 14px;
+}
+
+.result-row:last-child {
+    border-bottom: none;
+}
+/* Визуальные блоки внутри страницы настроек (Условия / Действия) */
+.rule-section {
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    background: #f9fafb;
+}
+/* Модальное окно для быстрого просмотра/редактирования правила */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    display: none; /* по умолчанию скрыто */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 14px 16px 16px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.modal-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+/* Компактные иконки-кнопки в таблицах */
+.btn-icon {
+    padding: 2px 6px;
+    min-width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* Заголовок карточки со стрелкой (для сворачивания) */
+.card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.card-header-row .card-title {
+    margin-bottom: 0;
+}
+
+.card-toggle-arrow {
+    font-size: 16px;
+    transition: transform 0.2s ease;
+    user-select: none;
+}
+
+.card-toggle-arrow.open {
+    transform: rotate(90deg);
+}
+
+/* Сворачиваемый блок содержимого карточки */
+.card-body-collapsible {
+    margin-top: 8px;
+}
+
+/* Форма сущностей, подсветка режима редактирования */
+.entity-form {
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-top: 10px;
+}
+
+.entity-form.editing {
+    border: 1px solid #3b82f6;
+    background: #eff6ff;
+}
+
+.entity-form-mode {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+/* Сетка для компактного размещения полей в два столбца */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Две колонки для карточек с таблицами на широких экранах */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+@media (min-width: 1024px) {
+    .two-column-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    }
+}
+/* === Компактный режим только для страницы настроек === */
+.settings-page .card {
+    padding: 10px 12px;
+}
+
+.settings-page .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.settings-page .field-label {
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+.settings-page .field {
+    margin-bottom: 6px;
+}
+
+.settings-page .field input,
+.settings-page .field select,
+.settings-page .field textarea {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+/* Компактная таблица в настройках */
+.settings-page .settings-table th,
+.settings-page .settings-table td {
+    padding: 4px 6px;
+    font-size: 11px;
+}
+
+/* Иконки-кнопки уже есть, оставляем: только для компактности настроек */
+.btn-icon {
+    padding: 2px 6px;
+    min-width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* Заголовок карточки со стрелкой (сворачивание) */
+.card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.card-header-row .card-title {
+    margin-bottom: 0;
+}
+
+.card-toggle-arrow {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+    user-select: none;
+}
+
+.card-toggle-arrow.open {
+    transform: rotate(90deg);
+}
+
+/* Свёрнутая карточка — меньше отступы */
+.settings-page .card.collapsed {
+    padding: 6px 10px;
+}
+
+/* Тело сворачиваемого блока */
+.card-body-collapsible {
+    margin-top: 8px;
+}
+
+/* Форма сущностей, подсветка при редактировании */
+.entity-form {
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-top: 8px;
+}
+
+.entity-form.editing {
+    border: 1px solid #3b82f6;
+    background: #eff6ff;
+}
+
+.entity-form-mode {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+/* Сетка: 2 колонки */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 6px;
+}
+
+/* Сетка: 3 колонки (для блока правил) */
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 6px;
+}
+
+@media (max-width: 1024px) {
+    .form-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .form-grid,
+    .form-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Модальное окно (как раньше) */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 14px 16px 16px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.modal-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
