@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: fit-content;
+}
+
 body {
     margin: 0;
     padding: 20px;
@@ -69,9 +73,9 @@ body {
 }
 
 .tab-btn.active {
-    background: #2fc6f6;
-    border-color: #2fc6f6;
-    color: #fff;
+    background: rgba(148, 230, 255, 1);
+    border-color: rgba(148, 230, 255, 1);
+    color: rgba(51, 60, 71, 1);
 }
 
 .header-admin {
@@ -188,18 +192,18 @@ body {
 
 .param-input:focus {
     outline: none;
-    border-color: #2fc6f6;
+    border-color: #7bf595;
     box-shadow: 0 0 0 2px rgba(47, 198, 246, 0.2);
 }
 
 .param-input.field-invalid {
     border-color: #dc3545;
-    box-shadow: 0 0 0 1px #dc3545;
+    box-shadow: 0 0 0 0px #dc3545;
 }
 
 .param-input.field-invalid:focus {
     border-color: #dc3545;
-    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+    box-shadow: 0 0 0 1px rgba(220, 53, 69, 0.25);
 }
 
 .param-hint {
@@ -303,7 +307,7 @@ body {
     font-size: 13px;
     border: 1px dashed #b8bfc6;
     border-radius: 4px;
-    background: transparent;
+    background: rgba(224, 246, 255, 1);
     color: #525c69;
     cursor: pointer;
     margin-bottom: 16px;
@@ -393,7 +397,8 @@ body {
 
 .result-table tr.total-row-sep th,
 .result-table tr.total-row-sep td {
-    padding-top: 24px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     border-top-width: 2px;
 }
 
@@ -425,11 +430,12 @@ body {
 }
 
 .btn-copy {
-    padding: 10px 20px;
+    margin: 10px 0px;
+    padding: 5px 20px;
     font-size: 14px;
     border: 1px solid #d5dce0;
-    border-radius: 4px;
-    background: #f5f7f8;
+    border-radius: 8px;
+    background: rgba(224, 255, 232, 1);
     color: #333c47;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
@@ -503,7 +509,7 @@ body {
 
 .history-table th,
 .history-table td {
-    padding: 10px 12px;
+    padding: 6px 12px;
     border-bottom: 1px solid #e6e9ec;
     text-align: left;
 }
@@ -551,13 +557,14 @@ body {
 
 .btn-history-copy,
 .btn-history-delete {
-    padding: 4px 10px;
+    padding: 4px 12px;
     font-size: 12px;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     border: 1px solid #d5dce0;
     background: #f5f7f8;
     color: #525c69;
+    text-align: center;
 }
 
 .btn-history-copy:hover,
@@ -655,7 +662,7 @@ body {
 .admin-header {
     background: #343a40;
     color: white;
-    padding: 15px 30px;
+    padding: 6px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -686,22 +693,22 @@ body {
     min-width: 250px;
     background: #f8f9fa;
     border-right: 1px solid #dee2e6;
-    padding: 15px;
+    padding: 6px;
     overflow-y: auto;
 }
 
 .admin-sidebar h3 {
-    margin: 0 0 15px 0;
+    margin: 0 0 6px 0;
     font-size: 16px;
     color: #495057;
 }
 
 .client-list-item {
-    padding: 10px 12px;
+    padding: 6px 8px;
     cursor: pointer;
     border-bottom: 1px solid #e9ecef;
     border-radius: 4px;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     transition: background 0.15s;
 }
 
@@ -736,7 +743,7 @@ body {
 
 .admin-content {
     flex: 1;
-    padding: 20px 30px;
+    padding: 6px 10px;
     overflow-y: auto;
 }
 
@@ -744,18 +751,18 @@ body {
     color: #adb5bd;
     font-size: 18px;
     text-align: center;
-    padding: 100px 0;
+    padding: 24px 0;
 }
 
 .accordion-section {
     border: 1px solid #dee2e6;
     border-radius: 6px;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     background: white;
 }
 
 .accordion-header {
-    padding: 12px 16px;
+    padding: 6px 10px;
     background: #e9ecef;
     cursor: pointer;
     font-weight: 600;
@@ -775,7 +782,7 @@ body {
 
 .accordion-body {
     display: none;
-    padding: 16px;
+    padding: 6px 10px;
 }
 
 .accordion-body.open {
@@ -786,20 +793,20 @@ body {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 }
 
 .rules-table th {
     background: #f8f9fa;
     font-weight: 600;
     text-align: left;
-    padding: 8px 10px;
+    padding: 4px 6px;
     border-bottom: 2px solid #dee2e6;
     white-space: nowrap;
 }
 
 .rules-table td {
-    padding: 6px 10px;
+    padding: 3px 6px;
     border-bottom: 1px solid #eee;
     vertical-align: middle;
 }
@@ -835,12 +842,12 @@ body {
 .transgran-tabs {
     display: flex;
     gap: 0;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     border-bottom: 2px solid #dee2e6;
 }
 
 .transgran-tab {
-    padding: 8px 16px;
+    padding: 6px 10px;
     border: none;
     background: none;
     cursor: pointer;
@@ -865,7 +872,7 @@ body {
     background: #28a745;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 6px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 13px;
@@ -880,7 +887,7 @@ body {
     background: #1976d2;
     color: white;
     border: none;
-    padding: 8px 20px;
+    padding: 6px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
@@ -895,7 +902,7 @@ body {
     background: #6c757d;
     color: white;
     border: none;
-    padding: 8px 20px;
+    padding: 6px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
@@ -923,7 +930,7 @@ body {
     background: #dc3545;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 6px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 13px;
@@ -935,7 +942,7 @@ body {
 }
 
 .form-actions {
-    margin-top: 15px;
+    margin-top: 6px;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -990,7 +997,7 @@ body {
 
 .modal-window {
     background: white;
-    padding: 30px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     max-width: 500px;
@@ -1000,12 +1007,12 @@ body {
 }
 
 .modal-title {
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     font-size: 18px;
 }
 
 .modal-actions {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     gap: 10px;
     justify-content: flex-end;
@@ -1023,7 +1030,7 @@ body {
 .form-grid {
     display: grid;
     grid-template-columns: 180px 1fr;
-    gap: 10px 15px;
+    gap: 6px 10px;
     align-items: center;
 }
 
@@ -1038,7 +1045,7 @@ body {
 .form-grid select,
 .form-grid textarea {
     width: 100%;
-    padding: 6px 10px;
+    padding: 4px 8px;
     font-size: 14px;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -1059,7 +1066,7 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 12px 24px;
+    padding: 8px 12px;
     border-radius: 6px;
     color: white;
     font-size: 14px;

@@ -31,6 +31,7 @@ App.init = function () {
             self.fillSelects();
             self.bindEvents();
             self.addService();
+            self.updateFieldValidity(false);
         })
         .catch(function (err) {
             alert('Ошибка сети: ' + err.message);

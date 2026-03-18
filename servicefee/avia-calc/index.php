@@ -24,8 +24,6 @@
                 <div class="two-columns">
                     <!-- Левая колонка: ввод данных -->
                     <div class="column-left">
-                        <h2 class="block-title">Ввод данных</h2>
-
                         <div class="block block-params">
                             <h3 class="block-subtitle">Параметры заказа</h3>
                             <div class="params-grid">
@@ -87,14 +85,14 @@
                         <div id="result-area" class="result-area">
                             <p id="result-placeholder" class="result-placeholder">Заполните данные для расчёта.</p>
                             <div id="result-content" class="result-content" style="display: none;">
-                                <div class="formulas-block">
-                                    <h4 class="formulas-title">Применённые формулы</h4>
-                                    <pre id="formulas-text" class="formulas-text"></pre>
-                                </div>
                                 <div class="result-table-wrap">
                                     <table id="result-table" class="result-table"></table>
                                 </div>
                                 <button type="button" id="btn-copy" class="btn-copy">Скопировать</button>
+                                <div class="formulas-block">
+                                    <h4 class="formulas-title">Применённые формулы</h4>
+                                    <pre id="formulas-text" class="formulas-text"></pre>
+                                </div>
                             </div>
                             <div id="result-error" class="result-error" style="display: none;"></div>
                         </div>
