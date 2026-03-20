@@ -164,14 +164,14 @@ switch ($action) {
         }
         // Валидация
         if (empty($input['client_code'])) {
-            sendError('Не указан код клиента (client_code).');
+            sendError('Не указан код клиента.');
         }
         $client = $ruleEngine->getClientByCode($input['client_code']);
         if (!$client) {
             sendError('Клиент с указанным кодом не найден.');
         }
         if (empty($input['payment_method_code'])) {
-            sendError('Не указан способ оплаты (payment_method_code).');
+            sendError('Не указан способ оплаты.');
         }
         $paymentMethods = $ruleEngine->getPaymentMethods();
         $paymentFound = false;
@@ -185,21 +185,21 @@ switch ($action) {
             sendError('Способ оплаты с указанным кодом не найден.');
         }
         if (!isset($input['supplier_country']) || (string) $input['supplier_country'] === '') {
-            sendError('Не указана страна поставщика (supplier_country).');
+            sendError('Не указана страна поставщика).');
         }
         $allowedCountries = ['RU', 'KZ'];
         if (!in_array(strtoupper((string) $input['supplier_country']), $allowedCountries, true)) {
             sendError('Страна поставщика допускает только RU или KZ.');
         }
         if (!isset($input['settlement_currency']) || (string) $input['settlement_currency'] === '') {
-            sendError('Не указана валюта расчёта (settlement_currency).');
+            sendError('Не указана валюта расчёта).');
         }
         $allowedCurrencies = ['RUB', 'EUR', 'USD', 'KZT'];
         if (!in_array(strtoupper((string) $input['settlement_currency']), $allowedCurrencies, true)) {
             sendError('Валюта расчёта допускает только RUB, EUR, USD или KZT.');
         }
         if (!isset($input['services']) || !is_array($input['services'])) {
-            sendError('Список услуг (services) должен быть непустым массивом.');
+            sendError('Список услуг должен быть непустым массивом.');
         }
         if (count($input['services']) < 1) {
             sendError('Должна быть указана хотя бы одна услуга.');
@@ -211,25 +211,25 @@ switch ($action) {
         }
         foreach ($input['services'] as $i => $svc) {
             if (empty($svc['service_type_code'])) {
-                sendError('У услуги ' . ($i + 1) . ' не указан тип (service_type_code).');
+                sendError('У услуги ' . ($i + 1) . ' не указан тип.');
             }
             if (!in_array($svc['service_type_code'], $serviceTypeCodes, true)) {
                 sendError('У услуги ' . ($i + 1) . ' указан неизвестный тип услуги.');
             }
             if (!isset($svc['amount']) || (float) $svc['amount'] <= 0) {
-                sendError('У услуги ' . ($i + 1) . ' сумма (amount) должна быть больше 0.');
+                sendError('У услуги ' . ($i + 1) . ' сумма должна быть больше 0.');
             }
             if (empty($svc['invoice_currency'])) {
-                sendError('У услуги ' . ($i + 1) . ' не указана валюта счёта (invoice_currency).');
+                sendError('У услуги ' . ($i + 1) . ' не указана валюта счёта.');
             }
         }
         $rateRsTls = isset($input['rate_rs_tls']) ? (float) $input['rate_rs_tls'] : 1.0;
         $rateKz = isset($input['rate_kz']) ? (float) $input['rate_kz'] : 0.0;
         if ($rateRsTls <= 0) {
-            sendError('Курс РС ТЛС (rate_rs_tls) должен быть больше 0.');
+            sendError('Курс РС ТЛС должен быть больше 0.');
         }
         if (strtoupper((string) $client['result_currency']) === 'EUR' && $rateKz <= 0) {
-            sendError('Для клиента SDG курс Казахстана (rate_kz) должен быть больше 0.');
+            sendError('Для клиента SDG курс Казахстана должен быть больше 0.');
         }
         $workingCurrency = isset($client['result_currency']) ? $client['result_currency'] : 'RUB';
         $converter = new \App\CurrencyConverter($workingCurrency, $rateRsTls, $rateKz);
